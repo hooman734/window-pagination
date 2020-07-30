@@ -1,17 +1,19 @@
 # import dependencies
 from math import ceil, floor
 
-# 
+
+# returns a tuple that shows the proper domain regarding the input parameters
 def create_tuple(current_page, number_all_pages, window_size):
     if current_page <= window_size / 2:
         return (1, window_size)
     if current_page >= (number_all_pages - window_size / 2):
-        return (number_all_pages - window_size + 1, y)
-    return (current_page-window_size/2, current_page+window_size/2)
+        return (number_all_pages - window_size + 1, number_all_pages)
+    return (current_page-window_size / 2, current_page+window_size / 2)
 
 
-def create_list(x, y, z):
-    (start, end) = create_tuple(x, y, z)
+# generate a range in regard of the input domain
+def create_list(current_page, number_all_pages, window_size):
+    (start, end) = create_tuple(current_page, number_all_pages, window_size)
 
     return [n for n in range(ceil(start), floor(end) + 1)]
 
